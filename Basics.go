@@ -64,6 +64,20 @@ func main() {
 		fmt.Println("Unknown Option")
 	}
 
+	/* NOTES :  Based on https://golang.org/doc/faq
+	1. Go does not support overloading of methods and operators.
+	2. Go does not provide implicit numeric conversions
+	3. Under the covers, interfaces are implemented as two elements, a type T and a value V.
+	   For instance, if we store the int value 3 in an interface, the resulting interface value has, schematically, (T=int, V=3)
+	   An interface value is nil only if the V and T are both unset, (T=nil, V is not set), In particular, a nil interface will always hold a nil type.
+	   If we store a nil pointer of type *int inside an interface value, the inner type will be *int regardless of the value of the pointer: (T=*int, V=nil).
+	   Such an interface value will therefore be non-nil even when the pointer value V inside is nil.
+	   To return a proper nil error to the caller, the function must return an explicit nil and not a pointer whose value is nil.
+	4. Map and slice values behave like pointers: they are descriptors that contain pointers to the underlying map or slice data
+	5. Avoid using a pointer to an interface. Pointers to interface values arise only in rare, tricky situations involving disguising an interface value's type for delayed evaluation.
+	6. Goroutines do not have names; they are just anonymous workers. They expose no unique identifier, name, or data structure to the programmer.
+	7. method set of a type T consists of all methods with receiver type T, while that of the corresponding pointer type *T consists of all methods with receiver *T or T.
+	   That means the method set of *T includes that of T, but not the reverse. */
 }
 
 func variableDec() {
