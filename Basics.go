@@ -26,6 +26,7 @@ func main() {
 	fmt.Println("10. Interfaces")
 	fmt.Println("11. Go Routines and channels")
 	fmt.Println("12. Panic and Recover")
+	fmt.Println("13. Viper Usage")
 
 	reader := bufio.NewReader(os.Stdin)
 	fmt.Print("Enter option number: ")
@@ -60,6 +61,8 @@ func main() {
 		routinesAndChannelUsage()
 	case 12:
 		panicAndRecoverUsage()
+	case 13:
+		ViperUsage()
 	default:
 		fmt.Println("Unknown Option")
 	}
